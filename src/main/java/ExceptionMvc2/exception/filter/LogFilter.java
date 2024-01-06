@@ -9,10 +9,12 @@ import java.util.UUID;
 
 @Slf4j
 public class LogFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         log.info("log filter init");
     }
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
                          FilterChain chain) throws IOException, ServletException {
@@ -25,11 +27,13 @@ public class LogFilter implements Filter {
             chain.doFilter(request, response);
         } catch (Exception e) {
             log.info("Exception {}", e.getMessage());
+            throw e;
         } finally {
             log.info("RESPONSE [{}][{}][{}]", uuid, request.getDispatcherType(),
                     requestURI);
         }
     }
+
     @Override
     public void destroy() {
         log.info("log filter destroy");
