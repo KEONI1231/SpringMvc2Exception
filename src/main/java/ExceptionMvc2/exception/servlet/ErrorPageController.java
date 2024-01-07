@@ -43,7 +43,7 @@ public class ErrorPageController {
     public ResponseEntity<Map<String, Object>> errorPage500Api(
             HttpServletRequest request,
             HttpServletResponse response){
-        log.error("API errorPage 500");
+        log.info("API errorPage 500");
         Map<String, Object> result = new HashMap<>();
         Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION);
         result.put("status", request.getAttribute(ERROR_STATUS_CODE));
@@ -61,7 +61,6 @@ public class ErrorPageController {
         log.info("ERROR_SERVLET_NAME: {}", request.getAttribute(ERROR_SERVLET_NAME));
         log.info("ERROR_STATUS_CODE: {}", request.getAttribute(ERROR_STATUS_CODE));
         log.info("dispatchType={}", request.getDispatcherType());
-
         log.info("dispatch Type = {}", request.getDispatcherType());
     }
 }
